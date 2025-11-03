@@ -5,8 +5,8 @@ apisix:
       enabled: true
       ingress:
         enabled: false
-      credentials:
-        admin: "test-admin"
+   #   credentials:
+   #     admin: "test-admin"
     deployment:
       role: traditional
       role_traditional:
@@ -24,8 +24,8 @@ apisix:
     config:
       provider:
         type: apisix-standalone
-      apisix:
-        adminKey: "test-admin"  # <--- AJOUT
+    #  apisix:
+    #    adminKey: "test-admin"  # <--- AJOUT
     deployment:
       replicas: 2
     # provider connection, global plugins, and plugin metadata.

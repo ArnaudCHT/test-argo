@@ -30,7 +30,13 @@ spec:
         targetRevision: HEAD
         path: '{{path}}'
       syncPolicy:
+        automated:
+          enabled: true
+          selfHeal: true
+          prune: true
+          allowEmpty: true
         syncOptions:
         - CreateNamespace=true
+        - ServerSideApply=true
 
 
