@@ -1,0 +1,36 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: charts-local-appset
+  namespace: argocd
+spec:
+  generators:
+  - list:
+      elements:
+      - name: apisix-v3
+        namespace: v3-apisix
+        path: charts/apisix
+      - name: test-apisix
+        namespace: test-apisix
+        path: charts/test-apisix
+      - name: simple-apisix-test
+        namespace: test-apisix
+        path: charts/simple-test-apisix
+  template:
+    metadata:
+      name: '{{name}}'
+      namespace: argocd
+    spec:
+      project: default
+      destination:
+        server: https://kubernetes.default.svc
+        namespace: '{{namespace}}'
+      source:
+        repoURL: https://github.com/ArnaudCHT/test-argo.git
+        targetRevision: HEAD
+        path: '{{path}}'
+      syncPolicy:
+        syncOptions:
+        - CreateNamespace=true
+
+

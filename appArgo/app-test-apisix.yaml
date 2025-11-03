@@ -1,0 +1,150 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2025-11-03T14:19:08Z"
+  generation: 15
+  name: test-apisix
+  namespace: argocd
+  resourceVersion: "207697"
+  uid: 9e8a3af4-b545-4b63-a3c0-71cfa002b2e3
+spec:
+  destination:
+    namespace: test-apisix
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/test-apisix
+    repoURL: https://github.com/ArnaudCHT/test-argo.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-11-03T14:19:09Z"
+    status: Healthy
+  history:
+  - deployStartedAt: "2025-11-03T14:19:14Z"
+    deployedAt: "2025-11-03T14:19:14Z"
+    id: 0
+    initiatedBy:
+      username: admin
+    revision: fed67dc81ac6ae1cc5fada4f3d082b1284edfbd8
+    source:
+      path: charts/test-apisix
+      repoURL: https://github.com/ArnaudCHT/test-argo.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2025-11-03T14:19:14Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: fed67dc81ac6ae1cc5fada4f3d082b1284edfbd8
+        syncOptions:
+        - CreateNamespace=true
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2025-11-03T14:19:14Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Secret
+        message: secret/consumer-key created
+        name: consumer-key
+        namespace: test-apisix
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apisix.apache.org
+        hookPhase: Running
+        kind: ApisixUpstream
+        message: apisixupstream.apisix.apache.org/apisix created
+        name: apisix
+        namespace: test-apisix
+        status: Synced
+        syncPhase: Sync
+        version: v2
+      - group: apisix.apache.org
+        hookPhase: Running
+        kind: ApisixConsumer
+        message: apisixconsumer.apisix.apache.org/apisix-consumer created
+        name: apisix-consumer
+        namespace: test-apisix
+        status: Synced
+        syncPhase: Sync
+        version: v2
+      - group: apisix.apache.org
+        hookPhase: Running
+        kind: ApisixRoute
+        message: apisixroute.apisix.apache.org/apsix created
+        name: apsix
+        namespace: test-apisix
+        status: Synced
+        syncPhase: Sync
+        version: v2
+      - group: apisix.apache.org
+        hookPhase: Running
+        kind: ApisixPluginConfig
+        message: apisixpluginconfig.apisix.apache.org/key-auth created
+        name: key-auth
+        namespace: test-apisix
+        status: Synced
+        syncPhase: Sync
+        version: v2
+      revision: fed67dc81ac6ae1cc5fada4f3d082b1284edfbd8
+      source:
+        path: charts/test-apisix
+        repoURL: https://github.com/ArnaudCHT/test-argo.git
+        targetRevision: HEAD
+  reconciledAt: "2025-11-03T14:37:29Z"
+  resourceHealthSource: appTree
+  resources:
+  - kind: Secret
+    name: consumer-key
+    namespace: test-apisix
+    status: Synced
+    version: v1
+  - group: apisix.apache.org
+    kind: ApisixConsumer
+    name: apisix-consumer
+    namespace: test-apisix
+    status: Synced
+    version: v2
+  - group: apisix.apache.org
+    kind: ApisixPluginConfig
+    name: key-auth
+    namespace: test-apisix
+    status: Synced
+    version: v2
+  - group: apisix.apache.org
+    kind: ApisixRoute
+    name: apsix
+    namespace: test-apisix
+    status: Synced
+    version: v2
+  - group: apisix.apache.org
+    kind: ApisixUpstream
+    name: apisix
+    namespace: test-apisix
+    status: Synced
+    version: v2
+  sourceHydrator: {}
+  sourceType: Helm
+  summary: {}
+  sync:
+    comparedTo:
+      destination:
+        namespace: test-apisix
+        server: https://kubernetes.default.svc
+      source:
+        path: charts/test-apisix
+        repoURL: https://github.com/ArnaudCHT/test-argo.git
+        targetRevision: HEAD
+    revision: a5fc31da3615feb14a35a3a2550a5b2e64d4c9d2
+    status: Synced

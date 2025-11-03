@@ -1,0 +1,134 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2025-11-03T14:17:02Z"
+  generation: 16
+  name: simple-apisix-test
+  namespace: argocd
+  resourceVersion: "207987"
+  uid: f34701e5-06c2-42c6-9d47-939436e58fdf
+spec:
+  destination:
+    namespace: test-apisix
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/simple-test-apisix
+    repoURL: https://github.com/ArnaudCHT/test-argo.git
+    targetRevision: HEAD
+  syncPolicy:
+    syncOptions:
+    - CreateNamespace=true
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-11-03T14:17:24Z"
+    status: Healthy
+  history:
+  - deployStartedAt: "2025-11-03T14:17:23Z"
+    deployedAt: "2025-11-03T14:17:23Z"
+    id: 0
+    initiatedBy:
+      username: admin
+    revision: fed67dc81ac6ae1cc5fada4f3d082b1284edfbd8
+    source:
+      path: charts/simple-test-apisix
+      repoURL: https://github.com/ArnaudCHT/test-argo.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2025-11-03T14:17:23Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        revision: fed67dc81ac6ae1cc5fada4f3d082b1284edfbd8
+        syncOptions:
+        - CreateNamespace=true
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2025-11-03T14:17:23Z"
+    syncResult:
+      resources:
+      - group: ""
+        hookPhase: Running
+        kind: Namespace
+        message: namespace/test-apisix created
+        name: test-apisix
+        namespace: ""
+        status: Synced
+        syncPhase: PreSync
+        version: v1
+      - group: ""
+        hookPhase: Running
+        kind: Service
+        message: service/simple-apisix-test-simple-test-apisix created
+        name: simple-apisix-test-simple-test-apisix
+        namespace: test-apisix
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apps
+        hookPhase: Running
+        images:
+        - hashicorp/http-echo:0.2.3
+        kind: Deployment
+        message: deployment.apps/simple-apisix-test-simple-test-apisix created
+        name: simple-apisix-test-simple-test-apisix
+        namespace: test-apisix
+        status: Synced
+        syncPhase: Sync
+        version: v1
+      - group: apisix.apache.org
+        hookPhase: Running
+        kind: ApisixRoute
+        message: apisixroute.apisix.apache.org/simple-apisix-test-simple-test-apisix
+          created
+        name: simple-apisix-test-simple-test-apisix
+        namespace: test-apisix
+        status: Synced
+        syncPhase: Sync
+        version: v2
+      revision: fed67dc81ac6ae1cc5fada4f3d082b1284edfbd8
+      source:
+        path: charts/simple-test-apisix
+        repoURL: https://github.com/ArnaudCHT/test-argo.git
+        targetRevision: HEAD
+  reconciledAt: "2025-11-03T14:40:05Z"
+  resourceHealthSource: appTree
+  resources:
+  - kind: Service
+    name: simple-apisix-test-simple-test-apisix
+    namespace: test-apisix
+    status: Synced
+    version: v1
+  - group: apisix.apache.org
+    kind: ApisixRoute
+    name: simple-apisix-test-simple-test-apisix
+    namespace: test-apisix
+    status: Synced
+    version: v2
+  - group: apps
+    kind: Deployment
+    name: simple-apisix-test-simple-test-apisix
+    namespace: test-apisix
+    status: Synced
+    version: v1
+  sourceHydrator: {}
+  sourceType: Helm
+  summary:
+    images:
+    - hashicorp/http-echo:0.2.3
+  sync:
+    comparedTo:
+      destination:
+        namespace: test-apisix
+        server: https://kubernetes.default.svc
+      source:
+        path: charts/simple-test-apisix
+        repoURL: https://github.com/ArnaudCHT/test-argo.git
+        targetRevision: HEAD
+    revision: a5fc31da3615feb14a35a3a2550a5b2e64d4c9d2
+    status: Synced

@@ -1,0 +1,265 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  creationTimestamp: "2025-11-03T13:55:24Z"
+  generation: 21
+  name: apisix-v3
+  namespace: argocd
+  resourceVersion: "207689"
+  uid: fa2925fc-ea0f-46d9-8007-7551c8de366a
+spec:
+  destination:
+    namespace: v3-apisix
+    server: https://kubernetes.default.svc
+  project: default
+  source:
+    path: charts/apisix
+    repoURL: https://github.com/ArnaudCHT/test-argo.git
+    targetRevision: HEAD
+status:
+  controllerNamespace: argocd
+  health:
+    lastTransitionTime: "2025-11-03T14:22:42Z"
+    status: Healthy
+  history:
+  - deployStartedAt: "2025-11-03T14:12:34Z"
+    deployedAt: "2025-11-03T14:12:35Z"
+    id: 0
+    initiatedBy:
+      username: admin
+    revision: fed67dc81ac6ae1cc5fada4f3d082b1284edfbd8
+    source:
+      path: charts/apisix
+      repoURL: https://github.com/ArnaudCHT/test-argo.git
+      targetRevision: HEAD
+  operationState:
+    finishedAt: "2025-11-03T14:22:42Z"
+    message: successfully synced (all tasks run)
+    operation:
+      initiatedBy:
+        username: admin
+      retry: {}
+      sync:
+        prune: true
+        resources:
+        - group: networking.k8s.io
+          kind: Ingress
+          name: apisix-v3-admin
+          namespace: v3-apisix
+        revision: 9ae17e4c964061d74c0175542bf5eff47fbd5a75
+        syncStrategy:
+          hook: {}
+    phase: Succeeded
+    startedAt: "2025-11-03T14:22:41Z"
+    syncResult:
+      resources:
+      - group: networking.k8s.io
+        hookPhase: Succeeded
+        kind: Ingress
+        message: pruned
+        name: apisix-v3-admin
+        namespace: v3-apisix
+        status: Pruned
+        syncPhase: Sync
+        version: v1
+      revision: 9ae17e4c964061d74c0175542bf5eff47fbd5a75
+      source:
+        path: charts/apisix
+        repoURL: https://github.com/ArnaudCHT/test-argo.git
+        targetRevision: HEAD
+  reconciledAt: "2025-11-03T14:37:23Z"
+  resourceHealthSource: appTree
+  resources:
+  - kind: ConfigMap
+    name: apisix-v3
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - kind: ConfigMap
+    name: apisix-v3-ingress-config
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - kind: Secret
+    name: etcd-apisix-v3
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - kind: Service
+    name: apisix-v3-admin
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - kind: Service
+    name: apisix-v3-gateway
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - kind: Service
+    name: apisix-v3-ingress-controller
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - kind: ServiceAccount
+    name: apisix-v3
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: apisixconsumers.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: apisixglobalrules.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: apisixpluginconfigs.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: apisixroutes.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: apisixtlses.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: apisixupstreams.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: backendtrafficpolicies.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: consumers.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: gatewayclasses.gateway.networking.k8s.io
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: gatewayproxies.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: gateways.gateway.networking.k8s.io
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: grpcroutes.gateway.networking.k8s.io
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: httproutepolicies.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: httproutes.gateway.networking.k8s.io
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: pluginconfigs.apisix.apache.org
+    status: Synced
+    version: v1
+  - group: apiextensions.k8s.io
+    kind: CustomResourceDefinition
+    name: referencegrants.gateway.networking.k8s.io
+    status: Synced
+    version: v1
+  - group: apisix.apache.org
+    kind: GatewayProxy
+    name: apisix-v3-config
+    namespace: v3-apisix
+    status: Synced
+    version: v1alpha1
+  - group: apps
+    kind: Deployment
+    name: apisix-v3
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - group: apps
+    kind: Deployment
+    name: apisix-v3-ingress-controller
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - group: networking.k8s.io
+    kind: IngressClass
+    name: apisix
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: apisix-v3-apisix-ingress-manager-role
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: apisix-v3-apisix-ingress-metrics-auth-role
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRole
+    name: apisix-v3-apisix-ingress-metrics-reader
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: apisix-v3-apisix-ingress-manager-rolebinding
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: ClusterRoleBinding
+    name: apisix-v3-apisix-ingress-metrics-auth-rolebinding
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: Role
+    name: apisix-v3-apisix-ingress-leader-election-role
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  - group: rbac.authorization.k8s.io
+    kind: RoleBinding
+    name: apisix-v3-apisix-ingress-leader-election-rolebinding
+    namespace: v3-apisix
+    status: Synced
+    version: v1
+  sourceHydrator: {}
+  sourceType: Helm
+  summary:
+    images:
+    - apache/apisix-ingress-controller:2.0.0-rc4
+    - apache/apisix:3.14.1-ubuntu
+    - ghcr.io/api7/adc:0.21.0
+  sync:
+    comparedTo:
+      destination:
+        namespace: v3-apisix
+        server: https://kubernetes.default.svc
+      source:
+        path: charts/apisix
+        repoURL: https://github.com/ArnaudCHT/test-argo.git
+        targetRevision: HEAD
+    revision: a5fc31da3615feb14a35a3a2550a5b2e64d4c9d2
+    status: Synced
