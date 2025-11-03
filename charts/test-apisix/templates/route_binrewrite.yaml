@@ -22,7 +22,7 @@ spec:
       enable: true
       config:
         whitelist:
-        - {{ include "test-apisix.nsPrefixSanitized" . }}{{ .Values.consumer.name | default "apisix-consumer" }} # namespace_consumer_name
+        - {{ include "test-apisix.nsPrefix" . }}_{{ .Values.consumer.name | default "apisix-consumer" }} # namespace_consumer_name
     plugin_config_name: key-auth
     upstreams:
     - name: apisix
