@@ -24,6 +24,8 @@ apisix:
     config:
       provider:
         type: apisix-standalone
+      apisix:
+        adminKey: "test-admin"  # <--- AJOUT
     deployment:
       replicas: 2
     # provider connection, global plugins, and plugin metadata.
@@ -31,12 +33,12 @@ apisix:
       # -- Controls whether to create a default GatewayProxy custom resource.
       createDefault: true
       # -- Configuration for the GatewayProxy provider connection
-      provider:
-        controlPlane:
-          service:
-            name: apisix-admin
-            port: 9180
-          auth:
-            type: AdminKey
-            adminKey:
-              value: "test-admin"
+      #provider:
+      #  controlPlane:
+      #    service:
+      #      name: apisix-admin
+      #      port: 9180
+      #    auth:
+      #      type: AdminKey
+      #      adminKey:
+      #        value: "test-admin"
