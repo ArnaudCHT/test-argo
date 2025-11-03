@@ -1,0 +1,29 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixRoute
+metadata:
+  name: apsix
+spec:
+  ingressClassName: apisix
+  http:
+  - name: rewrite
+    match:
+      hosts: 
+      - apig.local
+      paths:
+      - "/test-tmp/*"
+    plugins:
+    - name: proxy-rewrite
+      enable: true
+      config:
+       regex_uri:
+         - ^/test-tmp/(.*)
+         - /$1
+    - name: consumer-restriction
+      enable: true
+      config:
+        whitelist:
+        - {{ include "test-apisix.nsPrefixSanitized" . }}{{ .Values.consumer.name | default "apisix-consumer" }} # namespace_consumer_name
+    plugin_config_name: key-auth
+    upstreams:
+    - name: apisix
+

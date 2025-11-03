@@ -1,0 +1,28 @@
+#helm upgrade apisix apisix/apisix -i -f v3test/values.yaml -n ingress-apisix
+apisix:
+  apisix:
+    admin:
+      enabled: true
+      ingress:
+        enabled: true
+    deployment:
+      role: traditional
+      role_traditional:
+        config_provider: yaml
+  etcd:
+    enabled: false
+  ingress-controller:
+    enabled: true
+    apisix:
+      adminService:
+        namespace: v3-apisix
+        name: apisix-v3-admin
+  #    baseURL: http://apisix-admin.ingress-apisix.svc.cluster.local:9180
+  #    adminKey: edd1c9f034335f136f87ad84b625c8f1
+    config:
+      provider:
+        type: apisix-standalone
+    gatewayProxy:
+      createDefault: true
+gatewayProxy:
+      createCustom: false

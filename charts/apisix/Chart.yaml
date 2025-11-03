@@ -1,0 +1,11 @@
+apiVersion: v2
+name: apisix
+description: A Helm chart for Apache APISIX v3
+icon: https://apache.org/logos/res/apisix/apisix.png
+type: application
+version: 2.12.1
+appVersion: 3.14.1
+dependencies:
+  - name: apisix
+    version: 2.12.1
+    repository: https://charts.apiseven.com

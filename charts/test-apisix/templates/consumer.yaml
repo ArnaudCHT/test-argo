@@ -1,0 +1,24 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixConsumer
+metadata:
+  name: {{ .Values.consumer.name | default "apisix-consumer" }}
+spec:
+  ingressClassName: apisix
+  authParameter:
+    keyAuth:
+      secretRef:
+        name: {{ .Values.consumer.secretName | default "consumer-key" }}
+  #authParameter:
+  #  keyAuth:
+  #    value:
+  #      key: toto
+--- 
+
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ .Values.consumer.secretName | default "consumer-key" }}
+type: Opaque
+data:
+  key: {{ (.Values.consumer.key | default "toto") | b64enc | quote }}
+#key = toto

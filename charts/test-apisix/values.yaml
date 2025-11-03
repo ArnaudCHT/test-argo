@@ -1,0 +1,8 @@
+consumer:
+  # Nom du consumer APISIX (utilisé aussi dans la whitelist)
+  name: apisix-consumer
+  # Nom du secret qui porte la clé du consumer
+  secretName: consumer-key
+  # Clé API (en clair). Sera encodée en base64 par le template.
+  key: toto
+

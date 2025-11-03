@@ -1,0 +1,5 @@
+apiVersion: v2
+name: test-apisix
+description: Chart Helm pour la configuration des routes sur APISIX pour des tests
+type: application
+version: 0.1.0

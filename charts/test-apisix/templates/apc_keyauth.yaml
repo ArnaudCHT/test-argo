@@ -1,0 +1,12 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixPluginConfig
+metadata:
+  name: key-auth
+spec:
+  ingressClassName: apisix
+  plugins:
+  - name: key-auth
+    enable: true
+    config:
+      header: X-API-KEY
+      hide_credentials: true

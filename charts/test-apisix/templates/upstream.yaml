@@ -1,0 +1,13 @@
+apiVersion: apisix.apache.org/v2
+kind: ApisixUpstream
+metadata:
+  name: apisix
+spec:
+  ingressClassName: apisix
+  scheme: https
+  passHost: rewrite
+  upstreamHost: httpbin.org
+  externalNodes:
+  - type: Domain
+    name: httpbin.org
+    port: 443

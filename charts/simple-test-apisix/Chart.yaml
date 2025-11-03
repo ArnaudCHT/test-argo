@@ -1,0 +1,7 @@
+apiVersion: v2
+name: simple-test-apisix
+description: Chart Helm minimal pour tester APISIX avec un echo-service et une route
+type: application
+version: 0.1.0
+
+
