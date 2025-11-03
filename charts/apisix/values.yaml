@@ -5,8 +5,8 @@ apisix:
       enabled: true
       ingress:
         enabled: false
-   #   credentials:
-   #     admin: "test-admin"
+      credentials:
+        admin: "test-admin"
     deployment:
       role: traditional
       role_traditional:
@@ -27,18 +27,18 @@ apisix:
     #  apisix:
     #    adminKey: "test-admin"  # <--- AJOUT
     deployment:
-      replicas: 2
+      replicas: 1
     # provider connection, global plugins, and plugin metadata.
     gatewayProxy:
       # -- Controls whether to create a default GatewayProxy custom resource.
       createDefault: true
       # -- Configuration for the GatewayProxy provider connection
-      #provider:
-      #  controlPlane:
+      provider:
+        controlPlane:
       #    service:
       #      name: apisix-admin
       #      port: 9180
-      #    auth:
+          auth:
       #      type: AdminKey
-      #      adminKey:
-      #        value: "test-admin"
+            adminKey:
+              value: "test-admin"
