@@ -20,7 +20,7 @@ spec:
           image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
           imagePullPolicy: {{ .Values.image.pullPolicy }}
           args:
-            - "-text=Hello from APISIX Standalone! Bonjour"
+            - "-text=Hello from APISIX Standalone! Bonjour à tous"
           ports:
             - name: http
               containerPort: 5678
