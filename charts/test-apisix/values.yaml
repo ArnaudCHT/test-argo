@@ -6,3 +6,6 @@ consumer:
   # Clé API (en clair). Sera encodée en base64 par le template.
   key: toto
 
+
+
+
