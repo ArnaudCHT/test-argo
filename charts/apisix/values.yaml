@@ -2,6 +2,7 @@
 apisix:
   replicaCount: 2
   apisix:
+    replicaCount: 2
     admin:
       enabled: true
       ingress:
