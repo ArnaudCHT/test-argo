@@ -1,6 +1,7 @@
 #helm upgrade apisix apisix/apisix -i -f v3test/values.yaml -n ingress-apisix
 apisix:
   apisix:
+    replicas: 2
     admin:
       enabled: true
       ingress:
@@ -14,6 +15,7 @@ apisix:
   etcd:
     enabled: false
   ingress-controller:
+    replicas: 2
     enabled: true
     apisix:
       adminService:
