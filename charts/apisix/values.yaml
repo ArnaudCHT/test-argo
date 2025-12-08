@@ -1,7 +1,7 @@
 #helm upgrade apisix apisix/apisix -i -f v3test/values.yaml -n ingress-apisix
 apisix:
+  replicaCount: 2
   apisix:
-    replicaCount: 2
     admin:
       enabled: true
       ingress:
