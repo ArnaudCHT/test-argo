@@ -1,7 +1,7 @@
 #helm upgrade apisix apisix/apisix -i -f v3test/values.yaml -n ingress-apisix
 apisix:
   apisix:
-    replicas: 2
+    replicaCount: 2
     admin:
       enabled: true
       ingress:
@@ -29,7 +29,7 @@ apisix:
     #  apisix:
     #    adminKey: "test-admin"  # <--- AJOUT
     deployment:
-      replicas: 1
+      replicas: 2
     # provider connection, global plugins, and plugin metadata.
     gatewayProxy:
       # -- Controls whether to create a default GatewayProxy custom resource.
