@@ -14,10 +14,7 @@ spec:
     targetRevision: HEAD
   syncPolicy:
     automated:
-      enabled: true
-      selfHeal: true
-      prune: true
-      allowEmpty: true
+      enabled: false
     syncOptions:
     - CreateNamespace=true
     - ServerSideApply=true
