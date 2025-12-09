@@ -18,7 +18,7 @@ nodeSelector: {}
 tolerations: []
 affinity: {}
 
-args:  "-text=Hello from APISIX Standalone! Salut"
+args:  "-text=Hello from APISIX Standalone! Bonjour UL"
 
 
 
