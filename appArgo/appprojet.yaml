@@ -1,0 +1,42 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: test-project
+  namespace: argocd
+spec:
+  description: Projet pour le namespace test
+  sourceRepos:
+    - '*'
+  destinations:
+    - namespace: test
+      server: https://kubernetes.default.svc
+  clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+  roles:
+    - name: admin
+      description: Admin complet du projet
+      policies:
+        - p, proj:test-project:admin, applications, *, test-project/*, allow
+        - p, proj:test-project:admin, projects, update, test-project, allow
+      groups:
+        - admin-team
+        - toto
+    
+    - name: developer
+      description: Développeur avec droits limités
+      policies:
+        - p, proj:test-project:developer, applications, get, test-project/*, allow
+        - p, proj:test-project:developer, applications, sync, test-project/*, allow
+      groups:
+        - dev-team
+    
+    - name: viewer
+      description: Lecture seule
+      policies:
+        - p, proj:test-project:viewer, applications, get, test-project/*, allow
+      groups:
+        - readonly-team

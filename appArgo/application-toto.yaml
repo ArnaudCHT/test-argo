@@ -1,0 +1,15 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: testing
+spec:
+  destination:
+    namespace: test
+    server: https://kubernetes.default.svc
+  source:
+    path: charts/simple-test-apisix
+    repoURL: https://github.com/ArnaudCHT/test-argo.git
+    targetRevision: HEAD
+  sources: []
+  project: test-project
+
